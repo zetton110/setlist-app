@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="jp.setlist.app.userInfo">
+
+		<!-- <update id="createTable">
+			CREATE TABLE IF NOT EXISTS SETLIST_USER(ID INT PRIMARY KEY,NAME VARCHAR(50))
+		</update> -->
+		<update id="updateUser" parameterType="jp.setlist.app.common.beans.UserBean">
+        	UPDATE SETLIST_USER SET NAME = #{name} where ID = #{id}
+    	</update>
+
+		<update id="insertUser" parameterType="jp.setlist.app.common.beans.UserBean">
+			INSERT INTO SETLIST_USER(ID,NAME) VALUES(#{id}, #{name})
+		</update>
+		
+		<select id="selectUser" resultType="jp.setlist.app.dao.entity.UserEntity">
+			SELECT * FROM SETLIST_USER WHERE
+			id = #{id}
+		</select>
+		
+		<select id="selectAllUsers" resultType="hashmap">
+			SELECT * FROM SETLIST_USER
+		</select>			
+		
+	</mapper>
