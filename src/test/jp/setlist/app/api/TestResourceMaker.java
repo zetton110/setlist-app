@@ -4,7 +4,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 import jp.setlist.app.common.beans.UserBean;
+import jp.setlist.app.dao.UserInfoDao;
 import jp.setlist.app.dao.UserInfoDaoMapper;
+import jp.setlist.app.dao.impl.UserInfoDaoImpl;
 
 /**
  * テストデータ作成クラス
@@ -32,7 +34,7 @@ public class TestResourceMaker {
 			userBean.setId(testUser.getId());
 			userBean.setName(testUser.getName());
 			
-			UserInfoDaoMapper userInfoDao = new UserInfoDaoMapper();
+			UserInfoDao userInfoDao = new UserInfoDaoImpl();
 			userInfoDao.insertUser(userBean);
 		}
 		

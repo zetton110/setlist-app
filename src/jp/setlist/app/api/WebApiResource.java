@@ -12,8 +12,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jp.setlist.app.common.beans.UserBean;
-import jp.setlist.app.dao.UserInfoDaoMapper;
+import jp.setlist.app.dao.UserInfoDao;
 import jp.setlist.app.dao.entity.UserEntity;
+import jp.setlist.app.dao.impl.UserInfoDaoImpl;
 import jp.setlist.app.exception.AppException;
 
 /**
@@ -44,8 +45,8 @@ public class WebApiResource {
 		userBean.setName(name);
 		
 		//DB接続 -> ユーザ情報の登録
-		UserInfoDaoMapper userInfoDaoMapper = new UserInfoDaoMapper();
-		userInfoDaoMapper.insertUser(userBean);
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		userInfoDao.insertUser(userBean);
 		String msg = "USER情報を登録しました。";
 				
 		return Response.ok().entity(msg).build();
@@ -69,8 +70,8 @@ public class WebApiResource {
 		userBean.setName(name);
 		
 		//DB接続 -> ユーザ情報の登録
-		UserInfoDaoMapper userInfoDaoMapper = new UserInfoDaoMapper();
-		userInfoDaoMapper.updateUser(userBean);
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		userInfoDao.updateUser(userBean);
 		String msg = "USER情報を更新しました。";
 				
 		return Response.ok().entity(msg).build();
@@ -88,8 +89,14 @@ public class WebApiResource {
 	public Response getUserInfo(@QueryParam("id") String id){
 		
 		//DB接続 -> ユーザ情報取得
-		UserInfoDaoMapper userInfoDaoMapper = new UserInfoDaoMapper();
-		UserEntity user = userInfoDaoMapper.selectUser(id);
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		UserEntity user = null;
+		
+		try {
+			user = userInfoDao.selectUser(id);
+		} catch (AppException e) {
+			return Response.ok().entity(e.getErrMsg()).build();
+		}
 		
 		//JSON型へ変換
 		ObjectMapper mapper = new ObjectMapper();
@@ -114,8 +121,13 @@ public class WebApiResource {
 	public Response getAllUsersInfo(){
 		
 		//DB接続 -> 全ユーザ情報取得
-		UserInfoDaoMapper userInfoDaoMapper = new UserInfoDaoMapper();
-		List<Map<String,Object>> usersInfoList = userInfoDaoMapper.selectAllUsers();
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		List<Map<String, Object>> usersInfoList = null;
+		try {
+			usersInfoList = userInfoDao.selectAllUsers();
+		} catch (AppException e) {
+			return Response.ok().entity(e.getErrMsg()).build();
+		}
 		
 		//JSON型へ変換
 		ObjectMapper mapper = new ObjectMapper();

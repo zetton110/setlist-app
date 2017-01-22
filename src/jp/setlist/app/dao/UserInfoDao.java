@@ -5,6 +5,7 @@ import java.util.Map;
 
 import jp.setlist.app.common.beans.UserBean;
 import jp.setlist.app.dao.entity.UserEntity;
+import jp.setlist.app.exception.AppException;
 
 /**
  * 
@@ -14,9 +15,10 @@ import jp.setlist.app.dao.entity.UserEntity;
  */
 public interface UserInfoDao {
 
-	UserEntity selectUser(String userId);
+	UserEntity selectUser(String userId) throws AppException;
 	void insertUser(UserBean userBean);
-	List<Map<String,Object>> selectAllUsers();
+	List<Map<String,Object>> selectAllUsers() throws AppException;
+	void updateUser(UserBean userBean);
 	
 //	void createUserTable();
 	
