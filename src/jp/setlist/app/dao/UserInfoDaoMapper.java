@@ -17,8 +17,7 @@ public interface UserInfoDaoMapper {
 		UserEntity selectUser(String userId);
 		void insertUser(UserBean userBean);
 		List<Map<String,Object>> selectAllUsers();
-		void updateUser(UserBean userBean);
-		
-//		void createUserTable();
+		void updateUser(UserBean userBean);		
+		void createUserTable();
 		
 	}

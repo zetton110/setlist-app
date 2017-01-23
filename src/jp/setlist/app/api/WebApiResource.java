@@ -79,6 +79,27 @@ public class WebApiResource {
 
 	/**
 	 * 
+	 * ユーザテーブル作成用API
+	 * 
+	 * @param id　ユーザID
+	 * @param name ユーザ名
+	 * @return　Response　HTTPレスポンス
+	 */
+	@GET
+	@Path("create")
+	public Response createUserTable(){
+		
+		//DB接続 -> ユーザテーブルの作成
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		userInfoDao.createUserTable();
+		String msg = "USERテーブルを作成しました。";
+				
+		return Response.ok().entity(msg).build();
+	}
+
+
+	/**
+	 * 
 	 * ユーザ情報1件取得用API
 	 * 
 	 * @param id　ユーザID
@@ -140,16 +161,4 @@ public class WebApiResource {
 		
 		return Response.ok().entity(json).build();
 	}
-	
-//	@GET
-//	@Path("init")
-//	public Response init(){
-//		
-//		//DB接続 -> ユーザ情報取得
-//		UserInfoDaoMapper userInfoDaoMapper = new UserInfoDaoMapper();
-//		userInfoDaoMapper.createUserTable();
-//		String msg = "Userテーブルを作成しました。";
-//		
-//		return Response.ok().entity(msg).build();
-//	}	
 }

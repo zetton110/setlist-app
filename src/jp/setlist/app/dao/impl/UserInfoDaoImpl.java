@@ -87,5 +87,19 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		}
 		return allUsersInfo;
 	};
+	
+	/**
+	 * 
+	 * ユーザテーブルの作成
+	 * 
+	 */
+	@Override
+	public void createUserTable(){
+		SqlSession session = this.sqlSessionFactory.openSession();
+		UserInfoDaoMapper userInfoDaoMapper = session.getMapper(UserInfoDaoMapper.class);
+		userInfoDaoMapper.createUserTable();
+		session.commit();
+		session.close();
+	};
 
 }

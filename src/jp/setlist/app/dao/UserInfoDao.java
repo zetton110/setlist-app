@@ -19,7 +19,6 @@ public interface UserInfoDao {
 	void insertUser(UserBean userBean);
 	List<Map<String,Object>> selectAllUsers() throws AppException;
 	void updateUser(UserBean userBean);
-	
-//	void createUserTable();
+	void createUserTable();
 	
 }
