@@ -3,6 +3,8 @@ package jp.setlist.app.dao.impl;
 import java.util.List;
 import java.util.Map;
 
+import javax.enterprise.context.RequestScoped;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -13,6 +15,7 @@ import jp.setlist.app.dao.entity.UserEntity;
 import jp.setlist.app.exception.AppException;
 import jp.setlist.app.util.DaoUtil;
 
+@RequestScoped
 public class UserInfoDaoImpl implements UserInfoDao{
 	
 	private SqlSessionFactory sqlSessionFactory;

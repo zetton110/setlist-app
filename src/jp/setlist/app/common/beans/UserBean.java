@@ -1,9 +1,13 @@
 package jp.setlist.app.common.beans;
+
+import javax.enterprise.context.RequestScoped;
+
 /**
  * ユーザ情報ビーン（持ち回り用）
  * @author kohei
  *
  */
+@RequestScoped
 public class UserBean {
 	
 	/* ユーザ名 */

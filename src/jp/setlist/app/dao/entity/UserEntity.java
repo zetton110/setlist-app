@@ -1,10 +1,13 @@
 package jp.setlist.app.dao.entity;
 
+import javax.enterprise.context.RequestScoped;
+
 /**
  * ユーザ情報エンティティ（レコード1件分のユーザ情報格納用）
  * @author kohei
  *
  */
+@RequestScoped
 public class UserEntity {
 	
 	/* ユーザ名 */

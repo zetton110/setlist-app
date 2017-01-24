@@ -3,6 +3,9 @@ package jp.setlist.app.api;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -25,8 +28,21 @@ import jp.setlist.app.exception.AppException;
  *
  */
 @Path("user")
+@RequestScoped
 public class WebApiResource {
 
+	/*** ユーザーDAO ***/
+	@Inject
+	UserInfoDao userInfoDao;
+
+	/*** ユーザ情報ビーン ***/
+	@Inject
+	UserBean userBean;
+	
+	/*** ユーザ情報エンティティ ***/
+	@Inject
+	UserEntity user;
+	
 	/**
 	 * 
 	 * ユーザ情報登録用API
@@ -39,13 +55,11 @@ public class WebApiResource {
 	@Path("register")
 	public Response insertUser(@QueryParam("id") Integer id,@QueryParam("name") String name){
 		
-		//DAO受け渡し用のユーザ情報ビーン生成
-		UserBean userBean = new UserBean();
+		//DAO受け渡し用のユーザ情報ビーンにユーザ情報を設定
 		userBean.setId(id);
 		userBean.setName(name);
 		
 		//DB接続 -> ユーザ情報の登録
-		UserInfoDao userInfoDao = new UserInfoDaoImpl();
 		userInfoDao.insertUser(userBean);
 		String msg = "USER情報を登録しました。";
 				
@@ -65,12 +79,10 @@ public class WebApiResource {
 	public Response updateUser(@QueryParam("id") Integer id,@QueryParam("name") String name){
 		
 		//DAO受け渡し用のユーザ情報ビーン生成
-		UserBean userBean = new UserBean();
 		userBean.setId(id);
 		userBean.setName(name);
 		
 		//DB接続 -> ユーザ情報の登録
-		UserInfoDao userInfoDao = new UserInfoDaoImpl();
 		userInfoDao.updateUser(userBean);
 		String msg = "USER情報を更新しました。";
 				
@@ -90,7 +102,6 @@ public class WebApiResource {
 	public Response createUserTable(){
 		
 		//DB接続 -> ユーザテーブルの作成
-		UserInfoDao userInfoDao = new UserInfoDaoImpl();
 		userInfoDao.createUserTable();
 		String msg = "USERテーブルを作成しました。";
 				
@@ -110,9 +121,6 @@ public class WebApiResource {
 	public Response getUserInfo(@QueryParam("id") String id){
 		
 		//DB接続 -> ユーザ情報取得
-		UserInfoDao userInfoDao = new UserInfoDaoImpl();
-		UserEntity user = null;
-		
 		try {
 			user = userInfoDao.selectUser(id);
 		} catch (AppException e) {
@@ -142,7 +150,6 @@ public class WebApiResource {
 	public Response getAllUsersInfo(){
 		
 		//DB接続 -> 全ユーザ情報取得
-		UserInfoDao userInfoDao = new UserInfoDaoImpl();
 		List<Map<String, Object>> usersInfoList = null;
 		try {
 			usersInfoList = userInfoDao.selectAllUsers();
