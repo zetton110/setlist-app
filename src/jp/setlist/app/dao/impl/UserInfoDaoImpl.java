@@ -18,6 +18,7 @@ import jp.setlist.app.util.DaoUtil;
 @RequestScoped
 public class UserInfoDaoImpl implements UserInfoDao{
 	
+	/*** セッションファクトリ ***/
 	private SqlSessionFactory sqlSessionFactory;
 	
 	public UserInfoDaoImpl(){
