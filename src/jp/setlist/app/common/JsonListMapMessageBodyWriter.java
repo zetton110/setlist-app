@@ -16,7 +16,16 @@ import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+/**
+ * 
+ * JAX-RS拡張クラス
+ * 
+ * ArrayList<LinkedHashMap<String,String>>型のオブジェクトを
+ * JSON文字列として出力する。（Jackson利用）
+ * 
+ * @author kohei
+ *
+ */
 
 @Provider
 @Produces(MediaType.APPLICATION_JSON)

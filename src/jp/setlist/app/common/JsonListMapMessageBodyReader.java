@@ -17,8 +17,17 @@ import javax.ws.rs.ext.Provider;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-
+/**
+ * 
+ * JAX-RS拡張クラス
+ * 
+ * JSON形式の文字列を読み込み、
+ * ArrayList<LinkedHashMap<String,String>>>型へ
+ * マッピングする。（Jackson利用）
+ * 
+ * @author kohei
+ *
+ */
 @Provider
 @Consumes(MediaType.APPLICATION_JSON)
 public class JsonListMapMessageBodyReader implements MessageBodyReader<ArrayList<LinkedHashMap<String, String>>> {
