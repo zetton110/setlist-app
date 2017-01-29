@@ -23,6 +23,7 @@ import jp.setlist.app.exception.AppException;
 
 /**
  * 
+ * ユーザ情報操作用
  * WebAPIインターフェース実装クラス
  * 
  * @author kohei
@@ -30,7 +31,7 @@ import jp.setlist.app.exception.AppException;
  */
 @Path("user")
 @RequestScoped
-public class WebApiResource {
+public class UserApiResource {
 
 	/*** ユーザーDAO ***/
 	@Inject
@@ -58,10 +59,10 @@ public class WebApiResource {
 	public Response insertUser(LinkedHashMap<String, String> json) {
 
 		// jsonデータの値をBeanへマッピング
-		userBean.setName(json.get("user-name"));
-		userBean.setId(Integer.valueOf(json.get("user-id")));
-		userBean.setPassword(json.get("user-password"));
-		userBean.setEmailAddress(json.get("user-email-address"));
+		userBean.setId(Integer.valueOf(json.get("id")));
+		userBean.setName(json.get("name"));
+		userBean.setPassword(json.get("password"));
+		userBean.setEmail(json.get("email"));
 		
 		// DB接続 -> ユーザ情報の登録
 		userInfoDao.insertUser(userBean);

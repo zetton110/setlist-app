@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import jp.setlist.app.api.WebApiResource;
+import jp.setlist.app.api.UserApiResource;
 /**
  * アプリ内共通定義（WebAPIのアプリケーションパス）
  * @author kohei
@@ -18,7 +18,7 @@ public class WebApiDefinition extends Application{
 	@Override
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> s = new HashSet<Class<?>>();
-		s.add(WebApiResource.class);
+		s.add(UserApiResource.class);
 		s.add(JsonMapMessageBodyReader.class);
 		s.add(JsonListMapMessageBodyReader.class);
 		s.add(JsonMapMessageBodyWriter.class);

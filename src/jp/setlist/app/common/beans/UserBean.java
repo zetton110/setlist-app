@@ -20,7 +20,7 @@ public class UserBean {
 	private String password;
 
 	/* E-Mailアドレス */
-	private String emailAddress;
+	private String email;
 	
 
 	/*----------- 以下、アクセサメソッド -----------*/
@@ -41,12 +41,12 @@ public class UserBean {
 		this.id = id;
 	}
 	
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getEmail() {
+		return email;
 	}
 	
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setEmail(String emailAddress) {
+		this.email = emailAddress;
 	}
 	
 	public String getPassword() {

@@ -16,6 +16,12 @@ public class UserEntity {
 	/* ユーザID */
 	private Integer id;
 	
+	/* ユーザパスワード */
+	private String password;
+
+	/* ユーザE-Mailアドレス */
+	private String email;
+	
 	/*----------- 以下、アクセサメソッド -----------*/
 	
 	public String getName() {
@@ -32,5 +38,21 @@ public class UserEntity {
 	
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String emailAddress) {
+		this.email = emailAddress;
 	}
 }

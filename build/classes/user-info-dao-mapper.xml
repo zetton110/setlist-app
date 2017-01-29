@@ -5,14 +5,18 @@
 	<mapper namespace="jp.setlist.app.dao.UserInfoDaoMapper">
 
 		<update id="createUserTable">
-			CREATE TABLE SETLIST_USER(ID INT PRIMARY KEY,NAME VARCHAR(50))
+			CREATE TABLE SETLIST_USER(
+			ID INT PRIMARY KEY,
+			NAME VARCHAR(50),
+			PASSWORD VARCHAR(50),
+			EMAIL VARCHAR(50))
 		</update>
 		<update id="updateUser" parameterType="jp.setlist.app.common.beans.UserBean">
         	UPDATE SETLIST_USER SET NAME = #{name} where ID = #{id}
     	</update>
 
 		<update id="insertUser" parameterType="jp.setlist.app.common.beans.UserBean">
-			INSERT INTO SETLIST_USER(ID,NAME) VALUES(#{id}, #{name})
+			INSERT INTO SETLIST_USER(ID,NAME,PASSWORD,EMAIL) VALUES(#{id},#{name},#{password},#{email})
 		</update>
 		
 		<select id="selectUser" resultType="jp.setlist.app.dao.entity.UserEntity">
