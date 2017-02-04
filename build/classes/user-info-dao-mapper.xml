@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	<mapper namespace="jp.setlist.app.dao.UserInfoDaoMapper">
+	<mapper namespace="jp.setlist.app.dao.mapper.UserInfoDaoMapper">
 
 		<update id="createUserTable">
 			CREATE TABLE SETLIST_USER(

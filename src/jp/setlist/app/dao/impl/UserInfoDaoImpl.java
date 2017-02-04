@@ -10,8 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import jp.setlist.app.common.beans.UserBean;
 import jp.setlist.app.dao.UserInfoDao;
-import jp.setlist.app.dao.UserInfoDaoMapper;
 import jp.setlist.app.dao.entity.UserEntity;
+import jp.setlist.app.dao.mapper.UserInfoDaoMapper;
 import jp.setlist.app.exception.AppException;
 import jp.setlist.app.util.DaoUtil;
 
