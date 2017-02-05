@@ -1,14 +1,15 @@
 package jp.setlist.app.dao.entity;
 
-import jp.setlist.app.common.beans.LiveBean;
-
 public class ArtistEntity {
+	
+	/* アーティストID */
+	private String id;
+	
 	/* アーティスト名 */
 	private String name;
 	
-	/* ライブ情報 */
-	private LiveBean live;
-
+	/* 概要 */
+	private String description;	
 
 	/*----------- 以下、アクセサメソッド -----------*/
 	
@@ -20,12 +21,21 @@ public class ArtistEntity {
 		this.name = name;
 	}
 
-	public LiveBean getLive() {
-		return live;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setLiveInfo(LiveBean live) {
-		this.live = live;
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	
 }

@@ -5,31 +5,30 @@ import java.util.List;
 
 public class LiveEntity {
 
-	/* アーティスト名 */
-	private String artist;
+	/* ID */
+	private String id;
 	
 	/* 日付 */
 	private Date date;
+
+	/* アーティストID */
+	private String artist_id;
 	
 	/* ライブタイトル */
 	private String title;
 	
-	/* ライブ説明 */
-	private String description;
-	
 	/* セットリスト */
 	private List<String> setlist;
 
-	/*----------- 以下、アクセサメソッド -----------*/
-	
-	public String getArtist() {
-		return artist;
+	/*----------- 以下、アクセサメソッド -----------*/	
+
+	public String getArtist_id() {
+		return artist_id;
 	}
 
-	public void setArtist(String artist) {
-		this.artist = artist;
+	public void setArtist_id(String artist_id) {
+		this.artist_id = artist_id;
 	}
-
 	public Date getDate() {
 		return date;
 	}
@@ -46,20 +45,20 @@ public class LiveEntity {
 		this.title = title;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public List<String> getSetlist() {
 		return setlist;
 	}
 
 	public void setSetlist(List<String> setlist) {
 		this.setlist = setlist;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }

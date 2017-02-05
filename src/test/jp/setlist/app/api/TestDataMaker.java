@@ -17,7 +17,7 @@ import jp.setlist.app.dao.UserInfoDao;
  */
 @Path("test")
 @RequestScoped
-public class TestResourceMaker {
+public class TestDataMaker {
 
 	/*** ユーザーDAO ***/
 	@Inject
@@ -40,11 +40,13 @@ public class TestResourceMaker {
 	@Path("init")
 	public Response init(){
 
-		for(TestDBResourceEnum testUser:TestDBResourceEnum.values()){
+		for(TestUserDataEnum testUser:TestUserDataEnum.values()){
 			userBean.setId(testUser.getId());
 			userBean.setName(testUser.getName());
 			userBean.setPassword(testUser.getPassword());
 			userBean.setEmail(testUser.getEmail());
+			
+			//DBへ登録
 			userInfoDao.insertUser(userBean);
 		}
 		

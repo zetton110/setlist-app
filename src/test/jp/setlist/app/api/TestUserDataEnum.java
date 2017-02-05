@@ -7,7 +7,7 @@ package jp.setlist.app.api;
  * @author kohei
  *
  */
-public enum TestDBResourceEnum {
+public enum TestUserDataEnum {
 	
 	USER1(1,"小豆梓","a0001","0001@gmail.com"),
 	USER2(2,"新垣あやせ","a0002","0002@gmail.com"),
@@ -65,7 +65,7 @@ public enum TestDBResourceEnum {
 	private final String password;
 	private final String email;
 	
-	private TestDBResourceEnum(
+	private TestUserDataEnum(
 			final Integer id,
 			final String name,
 			final String password,
