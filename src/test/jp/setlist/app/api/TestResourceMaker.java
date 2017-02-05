@@ -43,6 +43,8 @@ public class TestResourceMaker {
 		for(TestDBResourceEnum testUser:TestDBResourceEnum.values()){
 			userBean.setId(testUser.getId());
 			userBean.setName(testUser.getName());
+			userBean.setPassword(testUser.getPassword());
+			userBean.setEmail(testUser.getEmail());
 			userInfoDao.insertUser(userBean);
 		}
 		
